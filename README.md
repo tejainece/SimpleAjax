@@ -12,9 +12,13 @@ A simple usage example:
     import 'package:SimpleAjax/SimpleAjax.dart';
 
     main() {
-      var awesome = new Awesome();
+      try {
+        dynamic data = getAjaxJsonResp("/some/url", {"data1": "some", "data2": "thing"});
+      } on AjaxRequestException catch(e) {
+        //TODO Do something about the exception
+      }
     }
 
 ## Features and bugs
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+Please file feature requests and bugs at the [issue tracker][https://github.com/tejainece/SimpleAjax/issues].

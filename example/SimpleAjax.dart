@@ -6,6 +6,6 @@ library SimpleAjax.example;
 import 'package:SimpleAjax/SimpleAjax.dart';
 
 main() {
-  var awesome = new Awesome();
-  print('awesome: ${awesome.isAwesome}');
+  //var awesome = new Awesome();
+  //print('awesome: ${awesome.isAwesome}');
 }

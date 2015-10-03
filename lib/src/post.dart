@@ -3,7 +3,7 @@
 
 part of simple_ajax.base;
 
-Future<Object> postAjaxJsonResp(String url, Map data) async {
+Future<Object> postAjaxJsonResp(String url, dynamic data) async {
   HttpRequest a_req = await postAjaxJson(url, data);
   Object l_ret = JSON.decode(a_req.responseText);
   return l_ret;

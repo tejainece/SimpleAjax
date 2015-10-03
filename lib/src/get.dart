@@ -4,7 +4,7 @@
 part of simple_ajax.base;
 
 /* Rest API */
-Future<Object> getAjaxJsonResp(String url, Map data) async {
+Future<Object> getAjaxJsonResp(String url, dynamic data) async {
   HttpRequest a_req = await getAjaxJson(url, data);
   Object l_ret = JSON.decode(a_req.responseText);
   return l_ret;

@@ -1,6 +1,6 @@
 name: simple_ajax
 description: A wrapper around Dart's HttpClient.
-version: 0.0.1
+version: 0.0.2
 author: Ravi Teja Gudapati <tejainece@gmail.com>
 homepage: https://geekwentfreak.com/
 

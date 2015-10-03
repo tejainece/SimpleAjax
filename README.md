@@ -9,8 +9,8 @@ A wrapper around Dart's HttpRequest to create
 
 A simple usage example:
 
-    import 'package:SimpleAjax/SimpleAjax.dart';
-
+    import 'package:simple_ajax/simple_ajax.dart';
+    
     main() {
       try {
         dynamic data = getAjaxJsonResp("/some/url", {"data1": "some", "data2": "thing"});

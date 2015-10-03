@@ -4,6 +4,6 @@
 /// The SimpleAjax library.
 ///
 /// This is an awesome library. More dartdocs go here.
-library SimpleAjax;
+library simple_ajax;
 
 export 'src/SimpleAjax_base.dart';

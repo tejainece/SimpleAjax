@@ -3,7 +3,7 @@
 
 library SimpleAjax.example;
 
-import 'package:SimpleAjax/SimpleAjax.dart';
+import 'package:simple_ajax/simple_ajax.dart';
 
 main() {
   //var awesome = new Awesome();

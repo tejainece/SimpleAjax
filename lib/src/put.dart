@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Ravi Teja Gudapati. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-part of SimpleAjax.base;
+part of simple_ajax.base;
 
 Future<Object> putAjaxJsonResp(String url, Map data) async {
   HttpRequest a_req = await putAjaxJson(url, data);

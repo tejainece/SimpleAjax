@@ -9,7 +9,7 @@ Future<Object> postAjaxJsonResp(String url, dynamic data) async {
   return l_ret;
 }
 
-Future<HttpRequest> postAjaxJson(String url, Map data) async {
+Future<HttpRequest> postAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("POST", url);
   addJSONHeaders(req);
@@ -24,7 +24,8 @@ Future<HttpRequest> postAjaxJson(String url, Map data) async {
   await for (ProgressEvent pe in req.onLoad) {
     HttpRequest response = pe.target;
     if (response.status < 200 || response.status > 299) {
-      throw new AjaxRequestException(response);
+      Exception bException = _createException(response);
+      throw bException;
     } else {
       ret = response;
       break;

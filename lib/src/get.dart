@@ -11,7 +11,7 @@ Future<Object> getAjaxJsonResp(String url, dynamic data) async {
 }
 
 /* Rest API */
-Future<HttpRequest> getAjaxJson(String url, Map data) async {
+Future<HttpRequest> getAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("GET", url);
   addJSONHeaders(req);
@@ -26,7 +26,34 @@ Future<HttpRequest> getAjaxJson(String url, Map data) async {
   await for (ProgressEvent pe in req.onLoad) {
     HttpRequest response = pe.target;
     if (response.status < 200 || response.status > 299) {
-      throw new AjaxRequestException(response);
+      Exception bException = _createException(response);
+      throw bException;
+    } else {
+      ret = response;
+      break;
+    }
+  }
+
+  return ret;
+}
+
+Future<HttpRequest> getAjaxJsonEnc(String url, dynamic data) async {
+  HttpRequest req = new HttpRequest();
+  req.open("GET", url);
+  addJSONHeaders(req);
+
+  try {
+    req.send(JSON.encode(data));
+  } catch (e) {
+    throw new AjaxRequestException.OtherError(AJAXEXCEPTION_REASON_SEND_ERROR);
+  }
+
+  HttpRequest ret;
+  await for (ProgressEvent pe in req.onLoad) {
+    HttpRequest response = pe.target;
+    if (response.status < 200 || response.status > 299) {
+      Exception bException = _createException(response);
+      throw bException;
     } else {
       ret = response;
       break;

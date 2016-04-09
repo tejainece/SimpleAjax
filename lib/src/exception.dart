@@ -38,3 +38,21 @@ class AjaxRequestException implements Exception {
     return "${reason}";
   }
 }
+
+class UnauthorizedException implements Exception {
+  AjaxRequestException() {
+
+  }
+
+  String toString() {
+    return "Please login!";
+  }
+}
+
+Exception _createException(HttpRequest req) {
+  if(req.status == 401) {
+    return new UnauthorizedException();
+  } else {
+    return new AjaxRequestException(req);
+  }
+}

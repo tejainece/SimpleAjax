@@ -3,7 +3,7 @@
 
 library SimpleAjax.test;
 
-import 'package:simple_ajax/simple_ajax.dart';
+//import 'package:simple_ajax/simple_ajax.dart';
 import 'package:test/test.dart';
 
 void main() {

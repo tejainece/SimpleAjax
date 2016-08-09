@@ -12,7 +12,7 @@ Future<Object> postAjaxJsonResp(String url, dynamic data) async {
 Future<HttpRequest> postAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("POST", url);
-  addJSONHeaders(req);
+  addJSONHeaders(req, data != null);
 
   try {
     req.send(JSON.encode(data));

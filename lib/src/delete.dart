@@ -12,7 +12,7 @@ Future<Object> deleteAjaxJsonResp(String url, dynamic data) async {
 Future<HttpRequest> deleteAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("DELETE", url);
-  addJSONHeaders(req);
+  addJSONHeaders(req, data != null);
 
   try {
     req.send(JSON.encode(data));

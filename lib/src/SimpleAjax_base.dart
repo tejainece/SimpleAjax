@@ -20,8 +20,11 @@ part 'exception.dart';
  * addJSONHeaders adds content type, accept and requested with
  * headers to the provided request.
  */
-void addJSONHeaders(HttpRequest aReq) {
-  aReq.setRequestHeader('Content-type', 'application/json');
+void addJSONHeaders(HttpRequest aReq, bool aIsJson) {
+  if(aIsJson) {
+    aReq.setRequestHeader('Content-type', 'application/json');
+  }
+
   aReq.setRequestHeader('Accept', 'application/json');
   aReq.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 }

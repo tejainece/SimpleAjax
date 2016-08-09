@@ -4,8 +4,13 @@
 part of simple_ajax.base;
 
 /* Rest API */
-Future<Object> getAjaxJsonResp(String url, dynamic data) async {
+Future<Object> getAjaxJsonResp(String url, dynamic data, {bool aDebug: false}) async {
   HttpRequest a_req = await getAjaxJson(url, data);
+
+  if(aDebug) {
+    print(a_req.responseText);
+  }
+
   Object l_ret = JSON.decode(a_req.responseText);
   return l_ret;
 }
@@ -14,7 +19,7 @@ Future<Object> getAjaxJsonResp(String url, dynamic data) async {
 Future<HttpRequest> getAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("GET", url);
-  addJSONHeaders(req);
+  addJSONHeaders(req, data != null);
 
   try {
     req.send(JSON.encode(data));
@@ -40,7 +45,7 @@ Future<HttpRequest> getAjaxJson(String url, dynamic data) async {
 Future<HttpRequest> getAjaxJsonEnc(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("GET", url);
-  addJSONHeaders(req);
+  addJSONHeaders(req, data != null);
 
   try {
     req.send(JSON.encode(data));

@@ -4,9 +4,14 @@
 part of simple_ajax.base;
 
 Future<Object> deleteAjaxJsonResp(String url, dynamic data) async {
-  HttpRequest a_req = await deleteAjaxJson(url, data);
-  Object l_ret = JSON.decode(a_req.responseText);
-  return l_ret;
+  HttpRequest aReq = await deleteAjaxJson(url, data);
+
+  if(aReq.responseText.length == 0) {
+    return null;
+  }
+
+  Object lRet = JSON.decode(aReq.responseText);
+  return lRet;
 }
 
 Future<HttpRequest> deleteAjaxJson(String url, dynamic data) async {

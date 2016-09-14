@@ -3,19 +3,31 @@
 
 part of simple_ajax.base;
 
-/* Rest API */
 Future<Object> getAjaxJsonResp(String url, dynamic data, {bool aDebug: false}) async {
-  HttpRequest a_req = await getAjaxJson(url, data);
+  HttpRequest aReq = await getAjaxJson(url, data);
 
   if(aDebug) {
-    print(a_req.responseText);
+    print(aReq.responseText);
   }
 
-  Object l_ret = JSON.decode(a_req.responseText);
-  return l_ret;
+  if(aReq.responseText.length == 0) {
+    return null;
+  }
+
+  Object lRet = JSON.decode(aReq.responseText);
+  return lRet;
 }
 
-/* Rest API */
+Future<String> getAjaxJsonText(String url, dynamic data, {bool aDebug: false}) async {
+  HttpRequest aReq = await getAjaxJson(url, data);
+
+  if(aDebug) {
+    print(aReq.responseText);
+  }
+
+  return aReq.responseText;
+}
+
 Future<HttpRequest> getAjaxJson(String url, dynamic data) async {
   HttpRequest req = new HttpRequest();
   req.open("GET", url);
